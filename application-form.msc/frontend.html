@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singularity Lab Application</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .form-section {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        input, textarea, select {
+            border: 1px solid #e5e7eb;
+            transition: all 0.2s ease-in-out;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+        }
+        .message-box {
+            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 to-purple-50 flex items-center justify-center min-h-screen p-6 md:p-10">
+
+    <div class="max-w-4xl w-full mx-auto">
+        <header class="text-center mb-12">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-2 tracking-tight">Singularity Lab</h1>
+            <p class="text-xl md:text-2xl text-gray-600 font-medium">Application Form</p>
+        </header>
+
+        <form id="applicationForm" class="space-y-10">
+
+            <!-- Personal Information Section -->
+            <div class="form-section">
+                <h2 class="text-2xl font-bold text-gray-800 mb-8">1. Personal Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label for="fullName" class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required class="w-full px-5 py-3 rounded-xl focus:outline-none">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                        <input type="email" id="email" name="email" required class="w-full px-5 py-3 rounded-xl focus:outline-none">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="w-full px-5 py-3 rounded-xl focus:outline-none">
+                    </div>
+                    <div>
+                        <label for="dateOfBirth" class="block text-sm font-semibold text-gray-700 mb-2">Date of Birth</label>
+                        <input type="date" id="dateOfBirth" name="dateOfBirth" required class="w-full px-5 py-3 rounded-xl focus:outline-none">
+                    </div>
+                </div>
+            </div>
+            <div class="form-section">
+                <h2 class="text-2xl font-bold text-gray-800 mb-8">2. Background</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label for="education" class="block text-sm font-semibold text-gray-700 mb-2">Highest Level of Education</label>
+                        <select id="education" name="education" required class="w-full px-5 py-3 rounded-xl focus:outline-none">
+                            <option value="">Select...</option>
+                            <option value="high_school">High School</option>
+                            <option value="undergraduate">Undergraduate Degree</option>
+                            <option value="masters">Master's Degree</option>
+                            <option value="phd">Ph.D.</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="occupation" class="block text-sm font-semibold text-gray-700 mb-2">Current Occupation</label>
+                        <input type="text" id="occupation" name="occupation" required class="w-full px-5 py-3 rounded-xl focus:outline-none">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Essay Question Section -->
+            <div class="form-section">
+                <h2 class="text-2xl font-bold text-gray-800 mb-8">3. Statement of Purpose</h2>
+                <div class="space-y-6">
+                    <p class="text-gray-600 leading-relaxed">
+                        In 250-500 words, please describe your primary area of interest in emerging technologies (e.g., AI, biotechnology, quantum computing). How do you envision your work contributing to a positive future for humanity?
+                    </p>
+                    <textarea id="essay" name="essay" rows="8" required class="w-full px-5 py-4 rounded-xl focus:outline-none"></textarea>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center">
+                <button type="submit" class="w-full md:w-2/3 px-12 py-4 bg-indigo-600 text-white text-lg font-bold rounded-full hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-500 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+                    Submit Application
+                </button>
+            </div>
+            
+            <!-- Message Box for Feedback -->
+            <div id="messageBox" class="hidden fixed bottom-5 right-5 w-80 p-5 rounded-2xl message-box transition-all duration-300 ease-in-out">
+                <div class="flex items-start">
+                    <div id="messageIcon" class="mr-3 flex-shrink-0"></div>
+                    <div>
+                        <p id="messageText" class="font-semibold text-gray-800"></p>
+                    </div>
+                    <button onclick="document.getElementById('messageBox').classList.add('hidden')" class="ml-auto text-gray-500 hover:text-gray-800 transition-colors duration-200">&times;</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('applicationForm');
+        const messageBox = document.getElementById('messageBox');
+        const messageText = document.getElementById('messageText');
+        const messageIcon = document.getElementById('messageIcon');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            // Simple validation and message display
+            if (data.fullName.trim() === '' || data.email.trim() === '') {
+                showMessage("Please fill in all required fields.", 'red');
+                return;
+            }
+
+            console.log("Application Submitted:", data);
+            showMessage("Application submitted successfully!", 'green');
+            form.reset();
+        });
+
+        function showMessage(message, type) {
+            messageText.textContent = message;
+            
+            let iconSvg = '';
+            if (type === 'green') {
+                iconSvg = `<svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+            } else if (type === 'red') {
+                iconSvg = `<svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+            }
+            messageIcon.innerHTML = iconSvg;
+
+            messageBox.classList.remove('hidden');
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 5000); // Hide after 5 seconds
+        }
+    </script>
+</body>
+</html>
