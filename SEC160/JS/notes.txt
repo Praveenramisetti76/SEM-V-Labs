@@ -1,0 +1,5 @@
+// primises
+pending , resolve and reject
+//difference btw get element by class name and queryselector
+mouse events 
+click ,dble click, mousover,mouseout

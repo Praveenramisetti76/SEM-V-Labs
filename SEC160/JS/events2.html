@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width:200px;
+            height:200px;
+            background-color: red;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bi{
+            font-size: 50px;
+            
+        }
+        form{
+            width:500px;
+            box-shadow: 0 0 10px gray;
+            padding:20px;
+            margin: auto;
+        }
+        input,select{
+            width:90%;
+            margin-top: 10px;
+            padding:10px;
+        }
+        button{
+            width:95%;
+            padding:10px;
+            margin-top:10px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div id="box">
+        <i class="bi bi-emoji-heart-eyes"></i>
+    </div>
+    <h4 id="clipboard">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil culpa facere accusamus et praesentium! Eius, consequatur ex? Nobis deserunt ea quod quibusdam exercitationem, culpa, vel minus reprehenderit expedita non minima!</h4>
+    <form id="form">
+        <input type="text" id="name" placeholder="Enter your name" required><br>
+        <input type="email" id="email" placeholder="Enter your email" required><br>
+       
+        <select id="city" required>
+            <option value="">Select your city</option>
+            <option value="delhi">Delhi</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="bangalore">Bangalore</option>
+            <option value="chennai">Chennai</option>
+        </select>
+
+        <button type="submit">Submit</button>
+        <p id="output"></p>
+    </form>
+    <script>
+        const box=document.getElementById("box");
+        console.log(box);
+        box.addEventListener('click',()=>{
+            box.style.backgroundColor='yellow';
+            box.innerHTML='<i class="bi bi-emoji-smile"></i>';
+        });
+        box.addEventListener('dblclick',()=>{
+            box.style.backgroundColor='red';
+            box.innerHTML='<i class="bi bi-emoji-heart-eyes"></i>';
+        });
+        box.addEventListener('mouseover',()=>{
+            box.style.backgroundColor='blue';
+            box.innerHTML='<i class="bi bi-emoji-sunglasses"></i>';
+        });
+        box.addEventListener('mouseout',()=>{
+            box.style.backgroundColor='red';
+            box.innerHTML='<i class="bi bi-emoji-heart-eyes"></i>';
+        });
+
+        //form events
+        const name=document.getElementById("name");
+        const email=document.getElementById("email");
+        const city=document.getElementById("city");
+        const form=document.getElementById("form");
+        const output=document.getElementById("output");
+        form.addEventListener('submit',(event)=>{
+            event.preventDefault();
+            alert("form submitted");
+            console.log(`name: ${name.value} and email: ${email.value} and city: ${city.value}`);
+        });
+        city.addEventListener('change',(event)=>{
+            console.log(`You selected ${event.target.value}`);
+        });
+        name.addEventListener('focus',()=>{
+            output.innerHTML=<p>Name input Fiels focused</p>;
+        })
+        name.addEventListener('blur',()=>{
+            output.innerHTML=`<p>Name input field lost focus</p>`;
+        })
+
+        //clipboard events
+        const clipboard=document.getElementById("clipboard");
+        clipboard.addEventListener('copy',()=>{
+            alert("You copied the text");
+        });
+        clipboard.addEventListener('cut',()=>{
+            output.innerHTML=<p style=" style:color">You cut the text</p>;
+        });
+        clipboard.addEventListener('paste',()=>{
+            alert("You pasted the text");
+        });
+
+    </script>
+</body>
+</html>

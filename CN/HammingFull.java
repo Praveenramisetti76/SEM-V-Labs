@@ -77,7 +77,6 @@ public class HammingFull {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
         // Phase 1: get data bits and encode
         System.out.print("Enter number of data bits (m): ");
         int m = sc.nextInt();

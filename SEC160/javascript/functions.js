@@ -81,7 +81,8 @@
  // api gets the data from the server
 async function pokemondata()
  {
-   try{ const response = await fetch(url);  // fetch(url) is returning a promise
+   try{
+    const response = await fetch(url);  // fetch(url) is returning a promise
     console.log(response)
     const data = await response.json(); // parsing json
     console.log(data);}
