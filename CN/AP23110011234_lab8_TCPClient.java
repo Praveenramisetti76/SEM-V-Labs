@@ -1,7 +1,7 @@
 import java.io.*;
 import java.net.*;
 
-public class TCPClient {
+public class AP23110011234_lab8_TCPClient {
     public static void main(String[] args) {
         try {
             // Connect to server

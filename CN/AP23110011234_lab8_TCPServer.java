@@ -1,7 +1,7 @@
 import java.io.*;
 import java.net.*;
 
-public class TCPServer {
+public class AP23110011234_lab8_TCPServer {
     public static void main(String[] args) {
         try {
             // Create a server socket at port 8080
